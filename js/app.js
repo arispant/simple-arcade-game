@@ -1,9 +1,9 @@
 // Enemies our player must avoid
-var Enemy = function(axisX , axisY, speed) {
+var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
-    this.axisX = axisX;
-    this.axisY = axisY;
+    this.x = x;
+    this.y = y;
     this.speed = speed;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -28,8 +28,10 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 class Player {
 
-    constructor(name){
-        this.name = name;
+    constructor(x, y){
+        this.x = x;
+        this.y = y;
+        this.player = 'images/char-boy.png';
     }
 
     update(){
@@ -37,7 +39,7 @@ class Player {
     }
 
     render(){
-
+        ctx.drawImage(Resources.get(this.player), this.x, this.y);
     }
 
     handleInput(){
@@ -49,11 +51,12 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let enemy1 = new Enemy();
-let enemy2 = new Enemy();
+let enemy1 = new Enemy(0, 63, 200);
+let enemy2 = new Enemy(0, 147, 200);
+let enemy3 = new Enemy(0, 230, 200);
 
-let allEnemies = [enemy1, enemy2];
-var player = new Player('aris');
+let allEnemies = [enemy1, enemy2, enemy3];
+var player = new Player(202, 405);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
