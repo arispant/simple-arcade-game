@@ -31,7 +31,7 @@ class Player {
     constructor(x, y){
         this.x = x;
         this.y = y;
-        this.player = 'images/char-boy.png';
+        this.playerImg = 'images/char-boy.png';
     }
 
     update(){
@@ -39,13 +39,21 @@ class Player {
     }
 
     render(){
-        ctx.drawImage(Resources.get(this.player), this.x, this.y);
+        ctx.drawImage(Resources.get(this.playerImg), this.x, this.y);
     }
 
-    handleInput(){
+    handleInput(evt){
 
+        if (evt == 'left' && this.x > 0) {
+            this.x -= 102;
+        } else if (evt == 'right' && this.x < 402) {
+            this.x += 102;
+        } else if (evt == 'up' && this.y > 0) {
+            this.y -= 83;
+        } else if (evt == 'down' && this.y < 402) {
+            this.y += 83;
+        }
     }
-
 }
 
 // Now instantiate your objects.
@@ -56,7 +64,7 @@ let enemy2 = new Enemy(0, 147, 200);
 let enemy3 = new Enemy(0, 230, 200);
 
 let allEnemies = [enemy1, enemy2, enemy3];
-var player = new Player(202, 405);
+var player = new Player(202, 402);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
