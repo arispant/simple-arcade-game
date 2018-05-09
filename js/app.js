@@ -33,6 +33,7 @@ class Player {
         this.x = x;
         this.y = y;
         this.playerImg = 'images/char-boy.png';
+        this.score = 0;
     }
 
     update(){
@@ -46,25 +47,29 @@ class Player {
     reInitializePlayer(){
         this.x = 202;
         this.y = 402;
+        //this.score += 1;
+        //document.getElementById("score").innerHTML = this.score;
+    }
+
+    updateScore(){
+      this.score += 1;
+      document.getElementById("score").innerHTML = this.score;
     }
 
     handleInput(evt){
 
         if (evt == 'left' && this.x > 0) {
             this.x -= 102;
-            console.log(this.x +" "+ this.y);
         } else if (evt == 'right' && this.x < 402) {
             this.x += 102;
-            console.log(this.x +" "+ this.y);
         } else if (evt == 'up' && this.y > 0) {
             this.y -= 83;
-            console.log(this.x +" "+ this.y);
             if (this.y === -13) {
               setTimeout(this.reInitializePlayer.bind(this), 1200);
+              this.updateScore();
             }
         } else if (evt == 'down' && this.y < 402) {
             this.y += 83;
-            console.log(this.x +" "+ this.y);
         }
     }
   }
@@ -92,3 +97,6 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+let scores = document.getElementById("score");
+scores.innerHTML = player.score;
