@@ -47,17 +47,14 @@ class Player {
     reInitializePlayer(){
         this.x = 202;
         this.y = 402;
-        //this.score += 1;
-        //document.getElementById("score").innerHTML = this.score;
     }
 
     updateScore(){
-      this.score += 1;
-      document.getElementById("score").innerHTML = this.score;
+        this.score += 1;
+        document.getElementById("score").innerHTML = this.score;
     }
 
     handleInput(evt){
-
         if (evt == 'left' && this.x > 0) {
             this.x -= 102;
         } else if (evt == 'right' && this.x < 402) {
