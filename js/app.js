@@ -43,27 +43,31 @@ class Player {
         ctx.drawImage(Resources.get(this.playerImg), this.x, this.y);
     }
 
+    reInitializePlayer(){
+        this.x = 202;
+        this.y = 402;
+    }
+
     handleInput(evt){
 
         if (evt == 'left' && this.x > 0) {
             this.x -= 102;
+            console.log(this.x +" "+ this.y);
         } else if (evt == 'right' && this.x < 402) {
             this.x += 102;
+            console.log(this.x +" "+ this.y);
         } else if (evt == 'up' && this.y > 0) {
             this.y -= 83;
-            if (this.y == -13) {
-              setTimeout(function(){
-                this.y = 402;
-              },800);
+            console.log(this.x +" "+ this.y);
+            if (this.y === -13) {
+              setTimeout(this.reInitializePlayer.bind(this), 1200);
             }
         } else if (evt == 'down' && this.y < 402) {
             this.y += 83;
+            console.log(this.x +" "+ this.y);
         }
-
-
-
+    }
   }
-}
 
 
 // Now instantiate your objects.
