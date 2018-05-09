@@ -51,11 +51,20 @@ class Player {
             this.x += 102;
         } else if (evt == 'up' && this.y > 0) {
             this.y -= 83;
+            if (this.y == -13) {
+              setTimeout(function(){
+                this.y = 402;
+              },800);
+            }
         } else if (evt == 'down' && this.y < 402) {
             this.y += 83;
         }
-    }
+
+
+
+  }
 }
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
