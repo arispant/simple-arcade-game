@@ -23,8 +23,8 @@ Enemy.prototype.update = function(dt) {
     this.speed = 100 + Math.floor((Math.random() * 350) + 200);
     }
 
-    if(player.x >= this.x - 30 && player.x <= this.x + 30){
-        if(player.y >= this.y - 30 && player.y <= this.y + 30){
+    if(player.x >= this.x - 75 && player.x <= this.x + 75){
+        if(player.y >= this.y - 75 && player.y <= this.y + 75){
             player.reInitializePlayer();
         }
     }
@@ -86,7 +86,7 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let enemy1 = new Enemy(-50, 63, Math.floor((Math.random() * 350) + 200));
+let enemy1 = new Enemy(-50, 63, 50);
 let enemy2 = new Enemy(-50, 147, Math.floor((Math.random() * 350) + 200));
 let enemy3 = new Enemy(-50, 230, Math.floor((Math.random() * 350) + 200));
 
