@@ -23,6 +23,11 @@ Enemy.prototype.update = function(dt) {
     this.speed = 100 + Math.floor((Math.random() * 350) + 200);
     }
 
+    if(player.x >= this.x - 30 && player.x <= this.x + 30){
+        if(player.y >= this.y - 30 && player.y <= this.y + 30){
+            player.reInitializePlayer();
+        }
+    }
 };
 
 // Draw the enemy on the screen, required method for game
