@@ -17,6 +17,12 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + this.speed * dt;
+
+    if (this.x > 510) {
+    this.x = -50;
+    this.speed = 100 + Math.floor((Math.random() * 350) + 200);
+    }
+
 };
 
 // Draw the enemy on the screen, required method for game
@@ -62,7 +68,7 @@ class Player {
         } else if (evt == 'up' && this.y > 0) {
             this.y -= 83;
             if (this.y === -13) {
-              setTimeout(this.reInitializePlayer.bind(this), 1200);
+              setTimeout(this.reInitializePlayer.bind(this), 800);
               this.updateScore();
             }
         } else if (evt == 'down' && this.y < 402) {
@@ -75,9 +81,9 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let enemy1 = new Enemy(0, 63, 100);
-let enemy2 = new Enemy(0, 147, 250);
-let enemy3 = new Enemy(0, 230, 200);
+let enemy1 = new Enemy(-50, 63, Math.floor((Math.random() * 350) + 200));
+let enemy2 = new Enemy(-50, 147, Math.floor((Math.random() * 350) + 200));
+let enemy3 = new Enemy(-50, 230, Math.floor((Math.random() * 350) + 200));
 
 let allEnemies = [enemy1, enemy2, enemy3];
 let player = new Player(202, 402);
