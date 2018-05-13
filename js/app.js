@@ -20,7 +20,7 @@ Enemy.prototype.update = function(dt) {
 
     if (this.x > 510) {
     this.x = -50;
-    this.speed = 100 + Math.floor((Math.random() * 350) + 200);
+    this.speed = 100 + Math.floor((Math.random() * 250) + 200);
     }
 
     if(player.x >= this.x - 75 && player.x <= this.x + 75){
@@ -80,18 +80,28 @@ class Player {
             this.y += 83;
         }
     }
+
+    selectPlayer(){
+        modal.classList.add("show");
+        
+        if (!playerSelected) {
+          setTimeout(selectPlayer,2000);
+      }
   }
+}
 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let enemy1 = new Enemy(-50, 63, 50);
-let enemy2 = new Enemy(-50, 147, Math.floor((Math.random() * 350) + 200));
-let enemy3 = new Enemy(-50, 230, Math.floor((Math.random() * 350) + 200));
+let enemy1 = new Enemy(-150, 63, Math.floor((Math.random() * 350) + 200));
+let enemy2 = new Enemy(-70, 147, Math.floor((Math.random() * 350) + 200));
+let enemy3 = new Enemy(-60, 230, Math.floor((Math.random() * 350) + 200));
+
 
 let allEnemies = [enemy1, enemy2, enemy3];
 let player = new Player(202, 402);
+let playerSelected = false;
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -106,5 +116,11 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
+
+let modal = document.querySelector(".player-selection");
+let playButton = document.getElementById("play");
+
 let scores = document.getElementById("score");
 scores.innerHTML = player.score;
+
+window.onload = player.selectPlayer();

@@ -1,3 +1,41 @@
 body {
     text-align: center;
 }
+
+.show {
+  	visibility: visible !important;
+  	opacity: 100 !important;
+}
+
+.player-selection {
+  	position: fixed;
+  	top: 0;
+  	bottom: 0;
+  	left: 0;
+  	right: 0;
+  	background: rgba(0, 0, 0, 0.6);
+  	transition: opacity 600ms;
+  	visibility: hidden;
+}
+
+.selection-content {
+  	margin: 60px auto;
+  	padding: 15px;
+  	background: #efefef;
+  	border-radius: 5px;
+  	width: 50%;
+  	position: relative;
+    text-align: center;
+    font-family: 'Handlee', cursive;
+}
+
+#play {
+  	background-color: #adafb2;
+    margin: 0 auto;
+  	padding: 10px;
+  	font-size: 1.2em;
+  	display: block;
+  	width: 35%;
+  	color: #4c4c4c;
+  	border-radius: 4px;
+}
