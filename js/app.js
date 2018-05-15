@@ -45,6 +45,7 @@ class Player {
         this.y = y;
         this.playerImg = 'images/char-boy.png';
         this.score = 0;
+        this.playerCharacters = ["images/char-boy.png","images/char-cat-girl", "images/char-horn-girl", "images/char-pink-girl", "images/char-princess-girl"];
     }
 
     update(){
@@ -83,11 +84,12 @@ class Player {
 
     selectPlayer(){
         modal.classList.add("show");
-        
-        if (!playerSelected) {
-          setTimeout(selectPlayer,2000);
+        let characters = document.querySelector(".characters");
+        characters.addEventListener("click", function(event){
+            player.playerImg = event.target.getAttribute("src");
+            modal.classList.remove("show");
+        });
       }
-  }
 }
 
 
