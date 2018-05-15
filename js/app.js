@@ -20,12 +20,18 @@ Enemy.prototype.update = function(dt) {
 
     if (this.x > 510) {
     this.x = -50;
-    this.speed = 100 + Math.floor((Math.random() * 250) + 200);
+    this.speed = 100 + Math.floor((Math.random() * 250) + 100);
     }
 
     if(player.x >= this.x - 75 && player.x <= this.x + 75){
         if(player.y >= this.y - 75 && player.y <= this.y + 75){
             player.reInitializePlayer();
+            player.lives -= 1;
+            document.getElementById("lives").innerHTML = player.lives;
+            if(player.lives === 0){
+                endModal.classList.add("show");
+                document.getElementById("totalScore").innerHTML = player.score;
+            }
         }
     }
 };
@@ -45,7 +51,7 @@ class Player {
         this.y = y;
         this.playerImg = 'images/char-boy.png';
         this.score = 0;
-        this.playerCharacters = ["images/char-boy.png","images/char-cat-girl", "images/char-horn-girl", "images/char-pink-girl", "images/char-princess-girl"];
+        this.lives = 3;
     }
 
     update(){
@@ -83,11 +89,11 @@ class Player {
     }
 
     selectPlayer(){
-        modal.classList.add("show");
+        startModal.classList.add("show");
         let characters = document.querySelector(".characters");
         characters.addEventListener("click", function(event){
             player.playerImg = event.target.getAttribute("src");
-            modal.classList.remove("show");
+            startModal.classList.remove("show");
         });
       }
 }
@@ -96,9 +102,9 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let enemy1 = new Enemy(-150, 63, Math.floor((Math.random() * 350) + 200));
-let enemy2 = new Enemy(-70, 147, Math.floor((Math.random() * 350) + 200));
-let enemy3 = new Enemy(-60, 230, Math.floor((Math.random() * 350) + 200));
+let enemy1 = new Enemy(-150, 63, Math.floor((Math.random() * 350) + 100));
+let enemy2 = new Enemy(-70, 147, Math.floor((Math.random() * 350) + 100));
+let enemy3 = new Enemy(-60, 230, Math.floor((Math.random() * 350) + 100));
 
 
 let allEnemies = [enemy1, enemy2, enemy3];
@@ -119,10 +125,22 @@ document.addEventListener('keyup', function(e) {
 });
 
 
-let modal = document.querySelector(".player-selection");
-let playButton = document.getElementById("play");
+let startModal = document.querySelector(".player-selection");
+let endModal = document.querySelector(".game-over");
 
 let scores = document.getElementById("score");
 scores.innerHTML = player.score;
+
+let live = document.getElementById("lives");
+lives.innerHTML = player.lives;
+
+document.getElementById("play-again").addEventListener("click", function(){
+        endModal.classList.remove("show");
+        startModal.classList.add("show");
+        player.lives = 3;
+        player.score = 0;
+        document.getElementById("lives").innerHTML = player.lives;
+        document.getElementById("score").innerHTML = player.score;
+    });
 
 window.onload = player.selectPlayer();

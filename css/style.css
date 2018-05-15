@@ -29,13 +29,55 @@ body {
     font-family: 'Handlee', cursive;
 }
 
-#play {
+.score-panel img {
+    height: 35px;
+    width: 35px;
+    margin: 10px 5px 0 25px;
+}
+.score-size {
+    font-size: 30px;
+}
+
+.score {
+    margin: 10px;
+}
+
+.game-over {
+  	position: fixed;
+  	top: 0;
+  	bottom: 0;
+  	left: 0;
+  	right: 0;
+  	background: rgba(0, 0, 0, 0.7);
+  	transition: opacity 600ms;
+  	font-size: 30px;
+    visibility: hidden;
+}
+
+.game-over-content {
+  	margin: 40px auto;
+  	padding: 15px;
+  	background: #efefef;
+  	border-radius: 5px;
+  	width: 60%;
+  	position: relative;
+    text-align: center;
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.game-over img {
+    height: 60px;
+    width: 60px;
+    margin: 10px 5px 0 25px;
+}
+
+#play-again {
   	background-color: #adafb2;
     margin: 0 auto;
   	padding: 10px;
-  	font-size: 1.2em;
+  	font-size: 0.6em;
   	display: block;
-  	width: 35%;
+  	width: 20%;
   	color: #4c4c4c;
   	border-radius: 4px;
 }

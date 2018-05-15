@@ -7,11 +7,29 @@
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
 </head>
 <body>
-    <div>
-      Score:
-      <span id = "score"></span>
+    <div class="score-panel">
+        <h1>Frogger Game</h1>
+        <div class="score-content">
+            <label for="lives"><img src="images/Heart.png" alt="Heart"></label>
+            <span id = "lives" class="score-size"></span>
+            <div class="gems">
+                <label for="blue-gem"><img src="images/Gem Blue.png" alt="Gem Blue"></label>
+                <span id = "blue-gem" class="score-size">0</span>
+                <label for="green-gem"><img src="images/Gem Green.png" alt="Gem Green"></label>
+                <span id = "green-gem" class="score-size">0</span>
+                <label for="orange-gem"><img src="images/Gem Orange.png" alt="Gem Orange"></label>
+                <span id = "orange-gem" class="score-size">0</span>
+            </div>
+            <div class="score">
+              <label for="score" class="score-size">Score:</label>
+              <span id = "score" class="score-size"></span>
+            </div>
+
+        </div>
+
     </div>
     <div class="player-selection">
         <div class="selection-content">
@@ -24,6 +42,25 @@
               <img src="images/char-pink-girl.png" alt="char-pink-girl">
               <img src="images/char-princess-girl.png" alt="char-princess-girl">
             </div>
+        </div>
+    </div>
+    <div class="game-over">
+        <div class="game-over-content">
+            <h2>Game Over! </h2>
+            Your score is: <span id="totalScore" class="score-size"> </span>
+            <p>
+                <div class="gems">
+                    <label for="blue"><img src="images/Gem Blue.png" alt="Gem Blue"></label>
+                    <span id = "blue" class="score-size">0</span>
+                    <label for="green"><img src="images/Gem Green.png" alt="Gem Green"></label>
+                    <span id = "green" class="score-size">0</span>
+                    <label for="orange"><img src="images/Gem Orange.png" alt="Gem Orange"></label>
+                    <span id = "orange" class="score-size">0</span>
+                </div>
+            </p>
+            <button id="play-again">
+                    Play again!</a>
+            </button>
         </div>
     </div>
     <script src="js/resources.js"></script>
