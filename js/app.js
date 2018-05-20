@@ -18,16 +18,19 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     this.x = this.x + this.speed * dt;
 
+    // check if enemy has reached the end of canvas and reset.
     if (this.x > 510) {
     this.x = -50;
     this.speed = 100 + Math.floor((Math.random() * 250) + 100);
     }
 
+    // check collision with player
     if(player.x >= this.x - 75 && player.x <= this.x + 75){
         if(player.y >= this.y - 75 && player.y <= this.y + 75){
             player.reInitializePlayer();
             player.lives -= 1;
             document.getElementById("lives").innerHTML = player.lives;
+
             if(player.lives === 0){
                 endModal.classList.add("show");
                 document.getElementById("totalScore").innerHTML = player.score;
@@ -76,18 +79,18 @@ class Player {
         if (evt == 'left' && this.x > 0) {
             this.x -= 102;
         } else if (evt == 'right' && this.x < 402) {
-            this.x += 102;
+              this.x += 102;
         } else if (evt == 'up' && this.y > 0) {
-            this.y -= 83;
-            if (this.y === -13) {
-              setTimeout(this.reInitializePlayer.bind(this), 800);
-              this.updateScore();
-            }
+              this.y -= 83;
+              if (this.y === -13) {
+                  setTimeout(this.reInitializePlayer.bind(this), 800);
+                  this.updateScore();
+              }
         } else if (evt == 'down' && this.y < 402) {
-            this.y += 83;
+              this.y += 83;
         }
     }
-
+    // additional method to execute onload and handle player's selection functionality
     selectPlayer(){
         startModal.classList.add("show");
         let characters = document.querySelector(".characters");
@@ -109,7 +112,6 @@ let enemy3 = new Enemy(-60, 230, Math.floor((Math.random() * 350) + 100));
 
 let allEnemies = [enemy1, enemy2, enemy3];
 let player = new Player(202, 402);
-let playerSelected = false;
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -124,16 +126,19 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-
+// selecting startModal and endModal DOM elements
 let startModal = document.querySelector(".player-selection");
 let endModal = document.querySelector(".game-over");
 
+// selecting scores DOM element and set content
 let scores = document.getElementById("score");
 scores.innerHTML = player.score;
 
+// selecting lives DOM element and set content
 let live = document.getElementById("lives");
 lives.innerHTML = player.lives;
 
+// set functionality for the play again button on endModal(Game over)
 document.getElementById("play-again").addEventListener("click", function(){
         endModal.classList.remove("show");
         startModal.classList.add("show");
@@ -143,4 +148,5 @@ document.getElementById("play-again").addEventListener("click", function(){
         document.getElementById("score").innerHTML = player.score;
     });
 
+// onload (refresh) run selectPlayer method
 window.onload = player.selectPlayer();
