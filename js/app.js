@@ -30,7 +30,6 @@ Enemy.prototype.update = function(dt) {
             player.reInitializePlayer();
             player.lives -= 1;
             document.getElementById("lives").innerHTML = player.lives;
-
             if(player.lives === 0){
                 endModal.classList.add("show");
                 document.getElementById("totalScore").innerHTML = player.score;
@@ -48,7 +47,7 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 class Player {
-
+    // constructor method to help us create player objects with the appropriate properties
     constructor(x, y){
         this.x = x;
         this.y = y;
@@ -56,7 +55,7 @@ class Player {
         this.score = 0;
         this.lives = 3;
     }
-
+    // Methods for setting functionality to Player objects.
     update(){
 
     }
