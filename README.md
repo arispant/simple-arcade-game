@@ -22,10 +22,11 @@ During the development proccess i used Vanilla JS and object oriented programmin
 
 ## Installation.
 
-No installation needed!
+To run the application:
 
-## How to play.
+Download the GitHub zip file and extract the project's files anywhere in your local machine or clone the repository onto your local workstation. In any case just:
+Open a browser window and navigate to the index.html file in your application's directory.
 
-Just click the link and you are ready to go!!!
+If you want a simplest way just click the link and you are ready to go!!!
 [Play!](https://arispant.github.io/simple-arcade-game/)
 
